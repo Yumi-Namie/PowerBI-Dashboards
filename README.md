@@ -1,6 +1,14 @@
 # PowerBI-Dashboards
+* [Dashboard de Ventas](#sales)
+* [Dashboard de Producción](#manufacturing)
+* [Dashboard de RH](#rh)
+* [Dashboard Financero](#financial)
+* [Referencias](#referencias)
 
-## Dashboard - Sales (Ventas)
+---
+
+<h2 align="center" class="sales">Dashboard - Sales (Ventas)</h2>
+
 ![image](https://github.com/Yumi-Namie/PowerBI-Dashboards/assets/109878163/c62a0e13-96a2-4167-a60a-cfeeac463a15)
 
 Visualización interactiva de datos que muestra información sobre la parte de ventas de produtos. Tomé un archivo de Excel con más de 2000 filas que contenía columnas de:
@@ -40,3 +48,10 @@ El panel cuenta con dos filtros que permiten el análisis de los datos de acuerd
 Para visualizar las horas productivas por mes, se ha creado un gráfico de área, que posibilita la observación de las variaciones en el tiempo de producción a lo largo de los meses. Además, se han incluido dos gráficos "speedy" para presentar porcentajes importantes: la disponibilidad (horas productivas / horas trabajadas) y la calidad (cantidad producida / cantidad producida + cantidad rechazada). Estos gráficos facilitan que el equipo de gestión comprenda la eficiencia del tiempo de producción y la eficacia general en relación a la calidad.
 ## Dashboard - RH
 ## Dashboard - Financial
+
+<h2 align="center" class="referencias">Referencias</h2>
+
+- PowerPoint - Para crear backgrounds
+- [Color-hex](https://www.color-hex.com/) - Para buscar cores
+- [Color-Space](https://mycolor.space/?hex=%23000000&sub=1) - Para combinar cores
+- [Flat Icon](https://www.flaticon.com/) - Para buscar icones
