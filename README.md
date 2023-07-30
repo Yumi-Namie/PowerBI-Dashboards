@@ -47,6 +47,50 @@ El panel cuenta con dos filtros que permiten el análisis de los datos de acuerd
 
 Para visualizar las horas productivas por mes, se ha creado un gráfico de área, que posibilita la observación de las variaciones en el tiempo de producción a lo largo de los meses. Además, se han incluido dos gráficos "speedy" para presentar porcentajes importantes: la disponibilidad (horas productivas / horas trabajadas) y la calidad (cantidad producida / cantidad producida + cantidad rechazada). Estos gráficos facilitan que el equipo de gestión comprenda la eficiencia del tiempo de producción y la eficacia general en relación a la calidad.
 ## Dashboard - RH
+El Dashboard de Recursos Humanos presenta información crucial sobre el desempeño del equipo de colaboradores de la empresa, siguiendo una lectura en Z para una mejor comprensión. La disposición de la información comienza con los números generales que indican el total de contrataciones, el número de empleados activos y el total de empleados desvinculados. La tasa de rotación se calcula con base en estos datos.
+
+![Alt text](image-1.png)
+
+El número de Empleados Activos se obtiene mediante una fórmula que cuenta el total de registros en la tabla "BaseFuncionarios" en la que la fecha de despido está en blanco, es decir, solo se consideran los empleados que aún están empleados.
+
+```
+Func. Ativos = CALCULATE(
+    COUNTROWS(BaseFuncionarios), 
+    BaseFuncionarios[Data de Demissao]=BLANK()
+    )
+```
+
+El número de Empleados Desvinculados, por otro lado, se obtiene utilizando una fórmula que cuenta el total de registros en la tabla "BaseFuncionarios" en la que la fecha de despido no está en blanco, identificando así a los colaboradores que han sido despedidos de la empresa.
+
+```
+Func. Desligados = CALCULATE(
+    COUNTROWS(BaseFuncionarios),
+    BaseFuncionarios[Data de Demissao]<>BLANK()
+)
+
+```
+
+La tasa de Rotación, que indica la proporción de empleados que han dejado la empresa, se calcula dividiendo el número de Empleados Desvinculados por el total de Contrataciones.
+
+```
+% Turnover = BaseFuncionarios[Func. Desligados]/[Contratações]
+```
+
+El gráfico de embudo representa el porcentaje de empleados activos en relación con diferentes ciudades, mientras que el gráfico circular muestra la distribución por género.
+
+
+Además, para hacer el dashboard más dinámico e interesante, se han implementado tooltips, que son información presentada en formato gráfico cuando el cursor se coloca sobre el gráfico de embudo y el gráfico circular. Esta interacción con los gráficos permite una mejor visualización de los datos y facilita el análisis de los resultados.
+
+![Alt text](image-3.png)
+
+El gráfico de Contrataciones se presenta como un Sparkline, un tipo de gráfico personalizado adquirido, que muestra las contrataciones a lo largo de los años. Esta representación visual ayuda a identificar patrones y tendencias a lo largo del tiempo.
+
+El gráfico de Árbol de Empleados Activos es una representación visual única e interactiva que muestra la estructura jerárquica de los empleados activos en la empresa. Muestra de manera clara la relación entre diferentes áreas y los cargos ocupados por los colaboradores.
+
+El diseño del dashboard ha sido cuidadosamente diseñado basándose en investigaciones en sitios web como Pinterest y Dribbble, buscando inspiración para crear una interfaz visual atractiva e intuitiva para los usuarios.
+
+En general, este Dashboard de Recursos Humanos ofrece una visión integral y detallada de la información esencial para la gestión de los colaboradores de la empresa, lo que ayuda en la toma de decisiones estratégicas y mejora del rendimiento organizacional.
+
 ## Dashboard - Financial
 
 <h2 align="center" class="referencias">Referencias</h2>
