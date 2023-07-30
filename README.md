@@ -3,7 +3,7 @@
 * [Dashboard de Producción](#manufacturing)
 * [Dashboard de RH](#rh)
 * [Dashboard Financero](#financial)
-* [Referencias](#referencias)
+* [Recursos](#referencias)
 
 ---
 
@@ -93,9 +93,10 @@ En general, este Dashboard de Recursos Humanos ofrece una visión integral y det
 
 ## Dashboard - Financial
 
-<h2 align="center" class="referencias">Referencias</h2>
+<h2 align="center" class="referencias">Recursos</h2>
 
 - PowerPoint - Para crear backgrounds
+- PicPick - Herramienta similar a una pipeta, para visualizar y seleccionar colores de manera precisa
 - [Color-hex](https://www.color-hex.com/) - Para buscar cores
 - [Color-Space](https://mycolor.space/?hex=%23000000&sub=1) - Para combinar cores
 - [Flat Icon](https://www.flaticon.com/) - Para buscar icones
