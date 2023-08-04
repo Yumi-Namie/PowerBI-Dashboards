@@ -92,6 +92,74 @@ El diseño del dashboard ha sido cuidadosamente diseñado basándose en investig
 En general, este Dashboard de Recursos Humanos ofrece una visión integral y detallada de la información esencial para la gestión de los colaboradores de la empresa, lo que ayuda en la toma de decisiones estratégicas y mejora del rendimiento organizacional.
 
 ## Dashboard - Financial
+Este es un tablero financiero que sigue una visualización en Z, donde la barra superior contiene información más general y los gráficos contienen información más detallada.
+
+![Alt text](image-5.png)
+
+En este dashboard se han importado tres gráficos diferentes de Power BI:
+
+Scroller: una barra de desplazamiento que tiene como categoría las ciudades (de Brasil), la margen de lucro como medida absoluta y la medida de desviación que representa la margen de desviación.
+
+![Alt text](tempsnip-1.png)
+
+Image Grid: imágenes de los bancos que funcionan como botones y filtran información de manera visual y dinámica.
+
+![Alt text](tempsnip.png)
+
+Enlighten Data Story: texto dinámico que contiene información sobre el número total de transacciones, el número de transacciones via PIX (equivalente al pago en Bizum) y el porcentaje de PIX con respecto al total de transacciones.
+
+![Alt text](tempsnip-2.png)
+
+Otros gráficos presentes son:
+
+Gráfico circular: muestra la margen de lucro en porcentaje y para que tenga esta forma de rosca, se ha calculado una nueva medida que es el cálculo de 100% - esta margen de lucro.
+
+Gráfico Waterfall Chart: es especialmente interesante para mostrar el lucro a lo largo del tiempo.
+
+### Las tablas calculadas son las siguientes:
+
+La tabla tiene una columna con dos tipos de movimientos: Recebimento (Ingresos) y pagamento (Pagos). En este caso, creamos una nueva medida que representa la suma total de los ingresos y otra para los pagos.
+
+```
+Receita = CALCULATE(
+    sum(Planilha1[Valor da Movimentação]), 
+    Planilha1[Tipo]="Recebimento")
+
+Pagamentos = -CALCULATE(
+    sum(Planilha1[Valor da Movimentação]), 
+    Planilha1[Tipo]="Pagamento")
+```
+Otra medida representa los impuestos con un valor del 15%.
+
+```
+Imposto = [Receita]*0.15
+```
+Después de tener estas tres medidas, se creó otra medida que representa el cálculo de lucro (beneficio).
+
+```
+Profit = [Receita]-[Pagamentos]-[Imposto]
+```
+Para el gráfico circular, creamos dos campos para representar la margen de lucro.
+
+```
+Margin Profit = [Profit]/[Receita]
+margin complement = 1-[Margin Profit]
+```
+Para el gráfico de Telling Story, se calculó el número total de transacciones, el número total de transacciones PIX y su porcentaje.
+
+```
+Number of transactions = COUNTROWS('Planilha1')
+
+PIX transactions = CALCULATE(
+    COUNTROWS('Planilha1'),
+    Planilha1[Forma Pagamento]="PIX")
+% PIX = [PIX transactions]/[Number of transactions]
+```
+
+Para el letrero dinámico, además de usar el campo de ciudades y la margen de lucro, se calculó la desviación de la meta con una base del 30%.
+```
+Deviation from the target = [Margin Profit] - 0.3
+```
 
 <h2 align="center" class="referencias">Recursos</h2>
 
@@ -100,3 +168,4 @@ En general, este Dashboard de Recursos Humanos ofrece una visión integral y det
 - [Color-hex](https://www.color-hex.com/) - Para buscar cores
 - [Color-Space](https://mycolor.space/?hex=%23000000&sub=1) - Para combinar cores
 - [Flat Icon](https://www.flaticon.com/) - Para buscar icones
+- Curso: Hashtag Treinamento (prof. Alon)
